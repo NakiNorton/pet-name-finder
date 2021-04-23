@@ -1,0 +1,12 @@
+{
+  "name": "pet-name-finder",
+  "displayName": "pet-name-finder",
+  "expo": {
+    "name": "pet-name-finder",
+    "slug": "pet-name-finder",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
