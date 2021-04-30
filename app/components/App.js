@@ -2,6 +2,8 @@ import React from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { Header } from 'react-native-elements';
 import Main from './Main'
+import { Constants } from 'react-native-unimodules';
+console.log("constants",  Constants.systemFonts);
 
 export default function App() {
   return (
