@@ -1,8 +1,16 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TouchableWithoutFeedback } from 'react-native';
+import PetImagePicker from './PetImagePicker.js'
+
 
 
 const Main = () => {
+
+  const onPressButton = () => {
+    alert('You tapped the button!')
+  }
+  
+
   return (
     <View style={styles.container}>
 
@@ -11,15 +19,24 @@ const Main = () => {
       </View>
 
       <View style={styles.imageContainer}>
-        <Text>Images goes here</Text>
+        <PetImagePicker/>
       </View>
 
       <Text style={styles.imageText}>Change photo</Text>
 
       <View style={styles.actionsContainer}>
-        <Text>Actions go here</Text>
-      </View>
+        <TouchableWithoutFeedback onPress={onPressButton}>
+          <Text>Back</Text>
+        </TouchableWithoutFeedback>
 
+        <TouchableWithoutFeedback onPress={onPressButton}>
+          <Text>Save</Text>
+        </TouchableWithoutFeedback>
+
+        <TouchableWithoutFeedback onPress={onPressButton}>
+          <Text>Next</Text>
+        </TouchableWithoutFeedback>
+      </View>
     </View>
   );
 }
@@ -35,7 +52,7 @@ const styles = StyleSheet.create({
   nameContainer: {
     flex: .75,
     width: '100%',
-    border: '1px solid yellow',
+    backgroundColor: 'yellow',
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -44,11 +61,12 @@ const styles = StyleSheet.create({
     color: '#FCA311',
   },
   imageContainer: {
-    flex: 2.5,
+    flex: 2.25,
+    paddingTop: '10%',
     width: '60%',
-    justifyItems: 'center',
     alignItems: 'center',
-    border: '1px solid red'
+    justifyContent: 'center',
+    backgroundColor: 'red'
   },
   imageText: { 
     textAlign: 'center', 
@@ -56,9 +74,11 @@ const styles = StyleSheet.create({
     flex: .25 
   },
   actionsContainer: {
-    flex: .5,
+    flex: .75,
+    flexDirection: 'row',
     width: '100%',
-    border: '1px solid yellow'
+    justifyContent: 'space-between',
+    backgroundColor: 'yellow'
   }
 
 });

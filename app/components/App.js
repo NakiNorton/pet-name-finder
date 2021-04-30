@@ -1,7 +1,7 @@
 import React from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { Header } from 'react-native-elements';
-import Main from './app/components/Main'
+import Main from './Main'
 
 export default function App() {
   return (
