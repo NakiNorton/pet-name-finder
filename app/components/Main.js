@@ -1,10 +1,16 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableWithoutFeedback } from 'react-native';
 import PetImagePicker from './PetImagePicker.js'
+import Icon from 'react-native-vector-icons/FontAwesome';
+
 
 
 
 const Main = () => {
+  const iconArrowLeft = <Icon name="arrow-left" size={72} color="#fff" />;
+  const iconArrowRight = <Icon name="arrow-right" size={72} color="#fff" />;
+  const iconHeart = <Icon name="heart" size={72} color="#fff" />;
+
 
   const onPressButton = () => {
     alert('You tapped the button!')
@@ -13,7 +19,7 @@ const Main = () => {
 
   return (
     <View style={styles.container}>
-
+   
       <View style={styles.nameContainer}>
         <Text style={styles.nameText}>Kota</Text>
       </View>
@@ -22,20 +28,20 @@ const Main = () => {
         <PetImagePicker/>
       </View>
 
-      <Text style={styles.imageText}>Change photo</Text>
-
       <View style={styles.actionsContainer}>
+     
         <TouchableWithoutFeedback onPress={onPressButton}>
-          <Text>Back</Text>
+          {iconArrowLeft} 
         </TouchableWithoutFeedback>
 
         <TouchableWithoutFeedback onPress={onPressButton}>
-          <Text>Save</Text>
+          {iconHeart}  
         </TouchableWithoutFeedback>
-
+        
         <TouchableWithoutFeedback onPress={onPressButton}>
-          <Text>Next</Text>
+          {iconArrowRight} 
         </TouchableWithoutFeedback>
+        
       </View>
     </View>
   );
@@ -66,7 +72,6 @@ const styles = StyleSheet.create({
     width: '60%',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'red'
   },
   imageText: { 
     textAlign: 'center', 
@@ -78,7 +83,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     width: '100%',
     justifyContent: 'space-between',
-    backgroundColor: 'yellow'
+    // backgroundColor: '',
+    paddingLeft: '5%',
+    paddingRight: '5%',
+    paddingBottom: '2.5%',
+    paddingTop: '2.5%',
   }
 
 });
