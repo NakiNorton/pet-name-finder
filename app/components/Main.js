@@ -1,27 +1,44 @@
-import React from 'react';
-import { StyleSheet, Text, View, TouchableWithoutFeedback } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { StyleSheet, Text, View, Pressable, Button } from 'react-native';
 import PetImagePicker from './PetImagePicker.js'
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 
+// Should put icons in a wrapper component for styling ?
+// Add a styling effect to the icons when they're pressed
 
+const Main = ({ allNames }) => {
+  const [ currentIndex, setCurrentIndex ] = useState(0)
 
-const Main = () => {
   const iconArrowLeft = <Icon name="arrow-left" size={72} color="#fff" />;
   const iconArrowRight = <Icon name="arrow-right" size={72} color="#fff" />;
   const iconHeart = <Icon name="heart" size={72} color="#fff" />;
 
+  console.log("current index", currentIndex)
 
-  const onPressButton = () => {
+  const onPressButton = (e) => {
+    console.log(e)
     alert('You tapped the button!')
   }
-  
 
+  useEffect(() => {
+    // if current index is -1 start looping backward through array
+    // if index is the last element in the array then restart from 0
+    if (currentIndex === -1) {
+      setCurrentIndex(allNames.length -1)
+    }
+
+    if (currentIndex === allNames.length) {
+      setCurrentIndex(0)
+    }
+  })
+
+  
   return (
     <View style={styles.container}>
    
       <View style={styles.nameContainer}>
-        <Text style={styles.nameText}>Kota</Text>
+        <Text style={styles.nameText}>{allNames[currentIndex]}</Text>
       </View>
 
       <View style={styles.imageContainer}>
@@ -30,17 +47,22 @@ const Main = () => {
 
       <View style={styles.actionsContainer}>
      
-        <TouchableWithoutFeedback onPress={onPressButton}>
-          {iconArrowLeft} 
-        </TouchableWithoutFeedback>
+        <Pressable name="left" onPress={() => {
+          setCurrentIndex((currentIndex) => currentIndex - 1)}
+        }>
+          {iconArrowLeft}
+        </Pressable>
 
-        <TouchableWithoutFeedback onPress={onPressButton}>
+{/* // or use onPressOut for calling method? */}
+        <Pressable onPress={onPressButton}>
           {iconHeart}  
-        </TouchableWithoutFeedback>
+        </Pressable>
         
-        <TouchableWithoutFeedback onPress={onPressButton}>
+        <Pressable onPress={() => {
+          setCurrentIndex((currentIndex) => currentIndex + 1)
+        }}>
           {iconArrowRight} 
-        </TouchableWithoutFeedback>
+        </Pressable>
         
       </View>
     </View>
