@@ -11,7 +11,7 @@ export default function App() {
       <Header
         placement="center"
         leftComponent={{ icon: 'menu', color: '#fff' }}
-        centerComponent={{ text: 'Pet Name Finder', style: { color: '#FCA311', fontSize: 28, fontFamily: 'Comic Sans MS, Comic Sans, cursive' } }}
+        centerComponent={{ text: 'Pet Name Finder', style: { color: '#FCA311', fontSize: 28, fontFamily: "Avenir-Light" } }}
         rightComponent={{ icon: 'home', color: '#fff' }}
         containerStyle={{
           backgroundColor: '#14213D',
