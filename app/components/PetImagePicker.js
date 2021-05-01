@@ -37,7 +37,7 @@ export default function PetImagePicker() {
     <View>
       {!image && <Image source={defaultImage} style={{ width: 250, height: 275 }} />}
       {image && <Image source={{ uri: image }} style={{ width: 250, height: 275 }} />}
-      <Button color= "#fff" title="Choose image" onPress={pickImage} />
+      <Button color="#D3D3D3" title="Choose image" accessibilityLabel="Select an image from your camera roll" onPress={pickImage} />
     </View>
   );
 }

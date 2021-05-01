@@ -10,9 +10,9 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 const Main = ({ allNames }) => {
   const [ currentIndex, setCurrentIndex ] = useState(0)
 
-  const iconArrowLeft = <Icon name="arrow-left" size={72} color="#fff" />;
-  const iconArrowRight = <Icon name="arrow-right" size={72} color="#fff" />;
-  const iconHeart = <Icon name="heart" size={72} color="#fff" />;
+  const iconArrowLeft = <Icon name="arrow-left" size={72} color="#FFF" />;
+  const iconArrowRight = <Icon name="arrow-right" size={72} color="#FFF" />;
+  const iconHeart = <Icon name="heart" size={72} color="#FCA311" />;
 
   console.log("current index", currentIndex)
 
@@ -36,11 +36,12 @@ const Main = ({ allNames }) => {
   
   return (
     <View style={styles.container}>
-   
+
+
       <View style={styles.nameContainer}>
         <Text style={styles.nameText}>{allNames[currentIndex]}</Text>
       </View>
-
+  
       <View style={styles.imageContainer}>
         <PetImagePicker/>
       </View>
@@ -78,19 +79,20 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   nameContainer: {
-    flex: .75,
-    width: '100%',
-    backgroundColor: 'yellow',
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    paddingBottom: "5%"
   },
   nameText: {
-    fontSize: 42,
-    color: '#FCA311',
+    fontSize: 62,
+    lineHeight: 72,
+    color: '#FFF',
+    fontFamily: "Avenir-Light",
+    padding: 0,
   },
   imageContainer: {
-    flex: 2.25,
-    paddingTop: '10%',
+    flex: 1.5,
     width: '60%',
     alignItems: 'center',
     justifyContent: 'center',
@@ -101,10 +103,11 @@ const styles = StyleSheet.create({
     flex: .25 
   },
   actionsContainer: {
-    flex: .75,
+    flex: 1,
     flexDirection: 'row',
     width: '100%',
     justifyContent: 'space-between',
+    alignItems: 'center',
     // backgroundColor: '',
     paddingLeft: '5%',
     paddingRight: '5%',
