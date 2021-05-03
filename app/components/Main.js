@@ -2,20 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, Pressable, Button } from 'react-native';
 import PetImagePicker from './PetImagePicker.js'
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { STYLES } from '../styles/Styles'
 
-
-// Should put icons in a wrapper component for styling ?
-// Add a styling effect to the icons when they're pressed
 
 const Main = ({ allNames }) => {
   const [ currentIndex, setCurrentIndex ] = useState(0)
 
-  const iconArrowLeft = <Icon name="arrow-left" size={72} color="#FFF" />;
-  const iconArrowRight = <Icon name="arrow-right" size={72} color="#FFF" />;
-  const iconHeart = <Icon name="heart" size={72} color="#FCA311" />;
-
-  console.log("current index", currentIndex)
-
+  // functionality for saving a name will go here
   const onPressButton = (e) => {
     console.log(e)
     alert('You tapped the button!')
@@ -35,86 +28,43 @@ const Main = ({ allNames }) => {
 
   
   return (
-    <View style={styles.container}>
+    <View style={STYLES.container}>
 
-
-      <View style={styles.nameContainer}>
-        <Text style={styles.nameText}>{allNames[currentIndex]}</Text>
+      <View style={STYLES.nameContainer}>
+        <Text style={STYLES.nameText}>{allNames[currentIndex]}</Text>
       </View>
   
-      <View style={styles.imageContainer}>
+      <View style={STYLES.imageContainer}>
         <PetImagePicker/>
       </View>
 
-      <View style={styles.actionsContainer}>
-     
-        <Pressable name="left" onPress={() => {
-          setCurrentIndex((currentIndex) => currentIndex - 1)}
-        }>
-          {iconArrowLeft}
+      <View style={STYLES.actionsContainer}>
+        <Pressable 
+          name="left" 
+          onPress={() => setCurrentIndex((currentIndex) => currentIndex - 1)} 
+          style={({pressed}) => [{ opacity: pressed ? 0.5 : 1 }]} 
+        >
+          <Icon name="arrow-left" size={72} color="#FFF" />
         </Pressable>
 
-{/* // or use onPressOut for calling method? */}
-        <Pressable onPress={onPressButton}>
-          {iconHeart}  
+        <Pressable 
+          onPress={onPressButton} 
+          style={({pressed}) => [{ opacity: pressed ? .5 : 1 }]}
+        >
+          <Icon name="heart" size={72} color="#FCA311" /> 
         </Pressable>
         
-        <Pressable onPress={() => {
-          setCurrentIndex((currentIndex) => currentIndex + 1)
-        }}>
-          {iconArrowRight} 
+        <Pressable 
+          onPress={() => setCurrentIndex((currentIndex) => currentIndex + 1)} style={({pressed}) => [{ opacity: pressed ? .5 : 1}]} 
+        >
+          <Icon name="arrow-right" size={72} color="#FFF" /> 
         </Pressable>
-        
       </View>
     </View>
   );
 }
 
 
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'column',
-    flex: 4,
-    backgroundColor: '#14213D',
-    alignItems: 'center',
-  },
-  nameContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingBottom: "5%"
-  },
-  nameText: {
-    fontSize: 62,
-    lineHeight: 72,
-    color: '#FFF',
-    fontFamily: "Avenir-Light",
-    padding: 0,
-  },
-  imageContainer: {
-    flex: 1.5,
-    width: '60%',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  imageText: { 
-    textAlign: 'center', 
-    color: '#fff', 
-    flex: .25 
-  },
-  actionsContainer: {
-    flex: 1,
-    flexDirection: 'row',
-    width: '100%',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    // backgroundColor: '',
-    paddingLeft: '5%',
-    paddingRight: '5%',
-    paddingBottom: '2.5%',
-    paddingTop: '2.5%',
-  }
 
-});
 
 export default Main
