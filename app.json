@@ -8,5 +8,9 @@
     "assetBundlePatterns": [
       "**/*"
     ]
+  },
+  "infoPlist": {
+    "NSPhotoLibraryUsageDescription": "This app would like access to your photo gallery",
+    "NSCameraUsageDescription": "This app would like to access your camera"
   }
 }
