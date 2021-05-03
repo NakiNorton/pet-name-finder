@@ -10,7 +10,7 @@ export default function App() {
   const [ allNames, setAllNames ] = useState([])
 
   useEffect(() => {
-    // fetch data
+    // data fetch to replace mockdata
     const allNames = mockNameData
     setAllNames(allNames)
   })
